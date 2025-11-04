@@ -20,6 +20,7 @@ jobs:
 
       - name: Install Linter
         ##TODO
+        run: mvn site
 
       - name: Run Checkstyle
         ##TODO
@@ -38,6 +39,6 @@ jobs:
         ##TODO
         uses: actions/upload-artifact@v4
         path: /home/elliott/Downloads/Assignment5_Code/reports
-    uses:
+
   
   
