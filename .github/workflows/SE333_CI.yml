@@ -18,29 +18,20 @@ jobs:
           distribution: 'temurin'
           architecture: x64
 
-      - name: Install Linter
-        ##TODO
-        run: mvn site
-
       - name: Run Checkstyle
         ##TODO
-        run: mvn -B -D skipTests verify checkstyle:checkstyle
-
-      - name: Upload Checkstyle Result
-        ##TODO
-        uses: actions/upload-artifact@v4
-        with:
-          path: target/site
+        run: mvn -B -DskipTests verify checkstyle:checkstyle
 
       - name: Run Maven Test
         ##TODO
         run: mvn test jacoco:report
 
-      - name: Jacoco Report
-        ##TODO
+      - name: Upload reports
         uses: actions/upload-artifact@v4
         with:
-          path: target/site
+            name: code-reports
+            path: target/site
+            retention-days: 14
 
 
   
