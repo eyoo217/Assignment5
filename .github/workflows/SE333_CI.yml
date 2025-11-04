@@ -24,21 +24,25 @@ jobs:
 
       - name: Run Checkstyle
         ##TODO
-        run: mvn -B -D skipTests checkstyle:check
+        run: mvn checkstyle:check
 
       - name: Upload Checkstyle Result
         ##TODO
         uses: actions/upload-artifact@v4
-        path: /home/elliott/Downloads/Assignment5_Code/reports
+        with:
+          name: code-reports
+          path: /home/elliott/Downloads/Assignment5_Code/reports
 
       - name: Run Maven Test
         ##TODO
-        run: mvn test
+        run: mvn test jacoco:report
 
       - name: Jacoco Report
         ##TODO
         uses: actions/upload-artifact@v4
-        path: /home/elliott/Downloads/Assignment5_Code/reports
+        with:
+          name: jacoco-report
+          path: /home/elliott/Downloads/Assignment5_Code/reports
 
   
   
