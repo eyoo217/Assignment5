@@ -24,7 +24,7 @@ jobs:
 
       - name: Run Checkstyle
         ##TODO
-        run: mvn checkstyle:checkstyle
+        run: mvn -B -D skipTests verify checkstyle:checkstyle
 
       - name: Upload Checkstyle Result
         ##TODO
