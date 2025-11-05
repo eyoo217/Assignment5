@@ -33,6 +33,15 @@
             <version>3.27.3</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>2.7.2</version>
+            <!-- If Database is used in production code, use compile scope.
+                 If it's only used in tests, use test scope. -->
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
     <build>
         <plugins>
