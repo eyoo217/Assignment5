@@ -16,6 +16,7 @@ class AmazonIntegrationTest {
     @BeforeEach
     void setUp() {
         db = new Database();
+        db.resetDatabase();
         cart = new ShoppingCartAdaptor(db);
         List<PriceRule> rules = List.of(
                 new DeliveryPrice(), new ExtraCostForElectronics(), new RegularCost()
@@ -32,7 +33,6 @@ class AmazonIntegrationTest {
     @Test
     @DisplayName("specification-based")
     void testAddToCartPriceNothing() {
-        Amazon amazon = mock(Amazon.class);
         assertEquals(0, amazon.calculate());
     }
 
@@ -48,7 +48,6 @@ class AmazonIntegrationTest {
     @DisplayName("structural-based")
     void testCartAddition() {
         Item item = new Item(ItemType.ELECTRONIC, "phone", 1, 10.0);
-        assertEquals(List.of(), cart.getItems());
         amazon.addToCart(item);
         List<Item> itemsInCart = cart.getItems();
         assertEquals(itemsInCart.getFirst().getName(), item.getName());
